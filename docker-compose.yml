@@ -1,0 +1,13 @@
+version: '3'
+services:
+  mariadb:
+    image: mariadb:10.5
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+  moodle:
+    image: moodlehq/moodle-php-apache:7.4
+    volumes:
+      - ${MOODLE_DIR}:/var/www/html
+      - ./local/redirectonlogin:/var/www/html/local/redirectonlogin
+    ports:
+      - '${MOODLE_PORT}:80'
