@@ -13,13 +13,14 @@ class redirect_on_login {
         if(count(get_courses())>1){
             $course_id=self::classify_user($user);
         }
-        redirect(new moodle_url('/course/view.php',['id'=>$course_id,'email'=>$user->email]));
+        redirect(new moodle_url('/course/view.php',['id'=>$course_id]));
     }
 
     protected static function classify_user($user){
-        $id_teacher_or_staff=2;
-        $id_student=3;
-        $id_parent=4;
+
+        $id_teacher_or_staff=get_config('local_redirectonlogin','home_course_teacher');
+        $id_student=get_config('local_redirectonlogin','home_course_student');
+        $id_parent=get_config('local_redirectonlogin','home_course_parent');
         if($user->auth=='manual'){
             return $id_parent;
         }

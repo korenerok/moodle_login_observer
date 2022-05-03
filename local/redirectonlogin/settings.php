@@ -32,14 +32,14 @@ if ($hassiteconfig) { // needs this condition or there is error on login page
     $title = get_string('pluginname', 'local_redirectonlogin');
     $settings = new admin_settingpage('local_redirectonlogin', $title);
 
-    $displaylist=get_courses();
-
+    $displaylist=$DB->get_records_select_menu('course', 'id <> 1', [], 'id asc', 'id,fullname');
+ 
     $name = 'local_redirectonlogin/home_course_student';
     $description = get_string('home_course_student_desc', 'local_redirectonlogin');
     $title = get_string('home_course_student', 'local_redirectonlogin');
     $settings->add(new admin_setting_configselect($name, $title, $description, key($displaylist), $displaylist));
 
-    $name = 'local_redirectonlogin/home_course_teacher_or_staff';
+    $name = 'local_redirectonlogin/home_course_teacher';
     $description = get_string('home_course_teacher_or_staff_desc', 'local_redirectonlogin');
     $title = get_string('home_course_teacher_or_staff', 'local_redirectonlogin');
     $settings->add(new admin_setting_configselect($name, $title, $description, key($displaylist), $displaylist));
