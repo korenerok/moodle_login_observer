@@ -32,14 +32,10 @@ class redirect_on_login {
             return $id_teacher_or_staff;
         }
         if(substr($domain,-3)==".pr"){
-            $match=[];
-            if(preg_match("/de([0-9]+)/",$username,$match)===1 ){
-                if($username===$match[0])
-                    return $id_teacher_or_staff;
+            if(preg_match("/^de([0-9]+)$/",$username)===1 ){
+                return $id_teacher_or_staff;
             }
-            $match=[];
-            if(preg_match("/e([0-9]+)/",$username,$match)===1 ){
-                if($username===$match[0])
+            if(preg_match("/^e([0-9]+)$/",$username)===1 ){
                     return $id_student;
             }
         }
