@@ -16,7 +16,7 @@ Se tienen 3 tipos de usuarios:
 
 Se deben seleccionar los cursos a los cuales los usuarios serán redireccionados en base a las condiciones antes mencionadas.
 
-![settings.png](/local/redirectonlogin/pix/settings.png)
+![settings.png](pix/settings.png)
 
 
 
