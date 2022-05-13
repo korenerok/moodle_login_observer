@@ -31,7 +31,7 @@ class redirect_on_login {
         if($domain=='itec.pr' || $domain=='de.pr.gov'){
             return $id_teacher_or_staff;
         }
-        if(substr($domain,-3)==".pr"){
+        if($domain=="miescuela.pr"){
             if(preg_match("/^de([0-9]+)$/",$username)===1 ){
                 return $id_teacher_or_staff;
             }
