@@ -31,23 +31,21 @@ if ($hassiteconfig) { // needs this condition or there is error on login page
 
     $title = get_string('pluginname', 'local_redirectonlogin');
     $settings = new admin_settingpage('local_redirectonlogin', $title);
-
-    $displaylist=$DB->get_records_select_menu('course', 'id <> 1', [], 'id asc', 'id,fullname');
  
-    $name = 'local_redirectonlogin/home_course_student';
-    $description = get_string('home_course_student_desc', 'local_redirectonlogin');
-    $title = get_string('home_course_student', 'local_redirectonlogin');
-    $settings->add(new admin_setting_configselect($name, $title, $description, key($displaylist), $displaylist));
+    $name = 'local_redirectonlogin/home_student';
+    $description = get_string('home_student_desc', 'local_redirectonlogin');
+    $title = get_string('home_student', 'local_redirectonlogin');
+    $settings->add(new admin_setting_configtext($name, $title, $description, ""));
 
-    $name = 'local_redirectonlogin/home_course_teacher';
-    $description = get_string('home_course_teacher_or_staff_desc', 'local_redirectonlogin');
-    $title = get_string('home_course_teacher_or_staff', 'local_redirectonlogin');
-    $settings->add(new admin_setting_configselect($name, $title, $description, key($displaylist), $displaylist));
+    $name = 'local_redirectonlogin/home_teacher';
+    $description = get_string('home_teacher_or_staff_desc', 'local_redirectonlogin');
+    $title = get_string('home_teacher_or_staff', 'local_redirectonlogin');
+    $settings->add(new admin_setting_configtext($name, $title, $description, ""));
 
-    $name = 'local_redirectonlogin/home_course_parent';
-    $description = get_string('home_course_parent_desc', 'local_redirectonlogin');
-    $title = get_string('home_course_parent', 'local_redirectonlogin');
-    $settings->add(new admin_setting_configselect($name, $title, $description, key($displaylist), $displaylist));
+    $name = 'local_redirectonlogin/home_parent';
+    $description = get_string('home_parent_desc', 'local_redirectonlogin');
+    $title = get_string('home_parent', 'local_redirectonlogin');
+    $settings->add(new admin_setting_configtext($name, $title, $description, ""));
 
     $ADMIN->add('localplugins', $settings);
 }
